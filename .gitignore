@@ -1,3 +1,5 @@
 env/
+env/Lib
+env/Scripts
 db.sqlite3
 .idea
