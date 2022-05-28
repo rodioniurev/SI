@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sustinvestor</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/pricing/">
+    <link rel="stylesheet" href="/static/noui/nouislider/nouislider.css">
+    <script src="/static/noui/nouislider/nouislider.js"></script>
+    {% block header %}
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+        <style>
+            .bd-placeholder-img {
+                font-size: 1.125rem;
+                text-anchor: middle;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+            }
+
+            @media (min-width: 768px) {
+                .bd-placeholder-img-lg {
+                    font-size: 3.5rem;
+                }
+            }
+
+            .img-1 {
+                height: 20px;
+                background-size: cover;
+            }
+        </style>
+
+
+        <!-- Custom styles for this template -->
+    {% endblock header %}
+</head>
+<body class="me-5 ms-5">
+
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Sustinvestor</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Who we are</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Our mission</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Our technics</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="col-5 mt-5 ms-5 ">
+    <h1 class="h1 mt-5 mb-5">Become a sustainable investor!</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-5"><select name="sustain" class="form-select w-50" aria-label="Level of sustainability">
+            <option selected>Choose the level of sustainability</option>
+            <option class="bg-danger" value="1">One</option>
+            <option class="bg-warning" value="2">Two</option>
+            <option class="bg-success" value="3">Three</option>
+        </select></div>
+        <div class="col-12 mb-5">
+            <label for="profit" class="form-label h3 mb-0">Choose your target profitability (%)</label><br>
+            <div class="mt-5 mb-5" id="range"></div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary mt-5">Receive the list of companies</button>
+
+    </form>
+</div>
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+        <div class="col-12 col-md">
+            <small class="d-block mb-3 text-muted">&copy; Sustinvestor, 2022</small>
+        </div>
+    </div>
+</footer>
+<script src="/static/js/jquery.js"></script>
+<script>
+    const range = document.getElementById('range');
+
+    // Give the slider dimensions
+    range.style.height = '10px';
+    range.style.margin = '100px 20px 30px';
+
+    let uvoNoUiSlider = noUiSlider.create(range, {
+
+        range: {
+            'min': 0,
+            'max': 30
+        },
+
+        step: 1,
+
+        start: [0, 30],
+
+        margin: 1,
+
+
+        connect: true,
+
+        orientation: 'horizontal',
+
+        behaviour: 'tap-drag',
+        tooltips: true,
+
+        pips: {
+            mode: 'steps',
+            stepped: true,
+            density: -1
+        }
+    });
+</script>
+
+</body>
+</html>
